@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Player</title>
+    <title>Embedded YouTube Video</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Embedded Video Player</h1>
-    <label for="videoUrl">Enter Video URL:</label>
-    <input type="text" id="videoUrl">
-    <button onclick="loadVideo()">Load Video</button>
-    <div id="videoContainer">
-        <!-- Video player will be embedded here -->
-    </div>
+    <h1>Embedded YouTube Video</h1>
+    <input type="text" id="videoUrl" placeholder="Enter YouTube Video Link">
+    <button onclick="embedVideo()">Embed Video</button>
+    <div id="videoContainer"></div>
 
     <script>
-        function loadVideo() {
+        function embedVideo() {
             var videoUrl = document.getElementById("videoUrl").value;
             var videoContainer = document.getElementById("videoContainer");
-
-            var videoElement = document.createElement("video");
-            videoElement.controls = true;
-            videoElement.autoplay = true;
-            var sourceElement = document.createElement("source");
-            sourceElement.src = videoUrl;
-            sourceElement.type = "video/mp4"; // Change to the appropriate MIME type if needed
-
-            videoElement.appendChild(sourceElement);
-            videoContainer.innerHTML = "";
-            videoContainer.appendChild(videoElement);
+            videoContainer.innerHTML = '<iframe width="560" height="315" src="' + videoUrl + '" frameborder="0" allowfullscreen></iframe>';
         }
     </script>
 </body>
