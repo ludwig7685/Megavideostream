@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+</head>
+<body>
+    <h1>Embedded Video Player</h1>
+    <label for="videoUrl">Enter Video URL:</label>
+    <input type="text" id="videoUrl">
+    <button onclick="loadVideo()">Load Video</button>
+    <div id="videoContainer">
+        <!-- Video player will be embedded here -->
+    </div>
+
+    <script>
+        function loadVideo() {
+            var videoUrl = document.getElementById("videoUrl").value;
+            var videoContainer = document.getElementById("videoContainer");
+
+            var videoElement = document.createElement("video");
+            videoElement.controls = true;
+            videoElement.autoplay = true;
+            var sourceElement = document.createElement("source");
+            sourceElement.src = videoUrl;
+            sourceElement.type = "video/mp4"; // Change to the appropriate MIME type if needed
+
+            videoElement.appendChild(sourceElement);
+            videoContainer.innerHTML = "";
+            videoContainer.appendChild(videoElement);
+        }
+    </script>
+</body>
+</html>
